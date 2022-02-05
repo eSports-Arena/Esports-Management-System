@@ -1,0 +1,68 @@
+Users_Table:(Sign/SignUp)
+	>User_ID(PK)
+	>User_Name(NOT NULL)
+	>User_Email(UNIQUE)
+	>User_PhNo(NOT NULL)
+	>User_Role ------- //Participant or Organizer
+	>User_Password(NOT NULL)
+	>User_Verify_Email ------- //VERIFIED OR NOT VERIFIED
+	>User_Verify_PhNo ------- //VERIFIED OR NOT VERIFIED
+===================================================================================
+
+Games_Table:(Games Details)
+	>Game_ID(PK)
+	>Game_Name_Full(NOT NULL)
+	>Game_Name_Short(NOT NULL)
+	>Game_Description(NOT NULL)
+	
+Organizers_Table:(Organizer Details)
+	>Organizer_ID(PK)
+	>Organizer_Name(NOT NULL) ---- //Pre-populated or else can change from Users_Table	
+	>Organizer_User_ID(FK) ---- //Pre-populated from Users_Table
+	>Organizer_Email(NOT NULL) ---- //Pre-populated from Users_Table
+	>Organizer_PhNo(NOT NULL) ---- //Pre-populated from Users_Table
+	>Organizer_SocialMedia_YT
+	>Organizer_SocialMedia_Insta
+	>Organizer_SocialMedia_Twitter
+	
+Tournaments_Table:(Tournament Join Organizer)
+	>Tournament_ID(PK)
+	>Tournament_Organizer_ID(FK) ---- //Pre-populated from Organizers_Table
+	>Tournament_Name(NOT NULL)
+	>Tournament_Game_ID(FK) ---- //In UI user will choose game name 
+							---- //Pre-populated from Games_Table
+	
+TournamentDetails_Table:(Tournament Details)
+	>TournamentDetail_ID(PK)
+	>TournamentDetail_Tournament_ID(FK) ---- //Pre-populated from Tournaments_Table
+	>TournamentDetail_Type(Solo_Match/Multi_Match)(NOT NULL)
+		IF (TournamentDetail_Type is Solo_Match)
+			THEN >TournamentDetail_Date&Time(Solo_Match)(NOT NULL)
+		ELSE IF (TournamentDetail_Typeis Multi_Match)  
+			THEN >TournamentDetail_Duration_From(Multi_Match)(NOT NULL)
+	>TournamentDetail_Duration_To(Multi_Match)(NOT NULL)
+	>TournamentDetail_PrizePool(NOT NULL)
+	>TournamentDetail_Scrim_Type(PAID/FREE)(NOT NULL)
+	>TournamentDetail_Slots(NOT NULL)
+	>TournamentDetail_Rules&Regulations(NOT NULL)
+
+Teams_Table:(TeamLeader Details)
+	>Team_ID(PK)
+	>Team_Name(NOT NULL)
+	>Team_Leader_Name(NOT NULL) ---- //Pre-populated or else can change from Users_Table
+	>Team_Leader_User_ID(FK) ---- //Pre-populated from Users_Table
+	>Team_Game_ID(FK)
+	>Team_Tournament_ID(FK)
+		IF (Team_Tournament_ID is Solo_Match)
+			THEN below details not required
+		ELSE IF (Team_Tournament_ID is Multi_Match)  
+			THEN below details required
+	
+TeamMates_Table:(TeamMate Details) ---- // may/may not have account
+	>TeamMate_ID(PK)
+	>TeamMate_Team_ID(FK) ---- //Pre-populated or else can change from Teams_Table
+	>TeamMate_Name(NOT NULL)
+	>TeamMate_Email(NOT NULL) ---- //for PROMOTIONS
+	
+	
+	

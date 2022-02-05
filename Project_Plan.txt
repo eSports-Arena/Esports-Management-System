@@ -1,0 +1,81 @@
+**OPEN FOR ALL USERS === Sovon
+	=>HOME
+	=>ABOUT
+	=>TEAMS
+	=>VIDEOS
+	=>SOCIAL MEDIA
+	=>JOIN US
+		|->New User (SignUp)
+			Users_Table:(Sign/SignUp)
+				>User_ID(PK)
+				>User_Name(NOT NULL)
+				>User_Email(UNIQUE)
+				>User_PhNo(NOT NULL)
+				>User_Role ------- //Participant or Organizer
+				>User_Password(NOT NULL)
+				>User_Verify_Email ------- //VERIFIED OR NOT VERIFIED
+				>User_Verify_PhNo ------- //VERIFIED OR NOT VERIFIED
+	
+
+		|->Existing User (SignIn) --------- //USERS -> Organizers,Participants
+
+**OPEN FOR REGISTERED USERS === Jack
+	AS PARTICIPANT:
+		=>GAMES (Create DB : Games_Table)
+			|->Brief Details
+			|->Registration
+		=>Register your team(LOCAL)
+		=>Calender    --------------------- //Contains tournament dates and rules
+		=>Sponsors
+		=>NEWS
+		=>Contact Us
+		
+	AS ORGANIZERS:
+		=>GAMES (Create DB : Games_Table)
+			|->Brief Details
+			|->Registration(tournament)
+		=>Register your tournament(LOCAL)
+		=>Calender    --------------------- //Contains tournament dates and rules
+		=>Sponsors
+		=>NEWS
+		=>Contact Us
+		
+**Register your team (Create DB : Teams_Table & TeamMates_Table)
+	NAME(LEADER) - //Will be pre-populated - can be changed
+	TEAM_NAME
+	EMAIL - //Will be pre-populated
+	PHNO
+	GAME - //Will be pre-populated if navigating from Games Section
+	TOURNAMENT_NAME(tournament/match)
+	TEAM_MATES
+		2.TEAM_MATE_2
+			NAME
+			EMAIL
+		3.TEAM_MATE_3                    
+			NAME
+			EMAIL
+		4.TEAM_MATE_4
+			NAME
+			EMAIL
+		.....
+
+**Register your tournament/match & PAID/FREE SCRIMS (Create DB : Tournaments_Table & Organizers_Table & TournamentDetails_Table)
+	NAME(Tournament)
+	EMAIL
+	PHNO
+	GAME - //Will be pre-populated if navigating from Games Section
+	ADVERTISE OR PROMOTIONS
+	RULES
+		Tournament:
+			=>TIMINGS AND FIXTURES
+			=>PRIZE_POOL
+			=>PAID/FREE
+			=>SLOTS(TOTAL PARTICIPANTS/TEAMS)
+			=>NOTE : RULES AND REGULATIONS
+		MATCH:
+			=>TIMINGS
+			=>PRIZE_POOL
+			=>PAID/FREE
+			=>SLOTS(TOTAL PARTICIPANTS/TEAMS)
+			=>NOTE : RULES AND REGULATIONS
+			
