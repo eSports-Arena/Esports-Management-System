@@ -43,13 +43,13 @@ public class SignupService {
 		return codeRepository.save(code);
 	}
 	
-	public void sendVerificationMail(VerificationCode code ,User user, HttpServletRequest request) throws UnsupportedEncodingException, MessagingException
+	public void sendVerificationMail(VerificationCode code ,User user, String requestUrl) throws UnsupportedEncodingException, MessagingException
 	{
 		String subject = "please verify your registration";
 		String senderName = "eSports-Arena Team";
 		String content = "Dear" + user.getUserName();
 		content+="please click the below link to verify<br>"
-				+"<h3><a href='"+serviceUrl.getSiteURL(request)+"/verify/"+code.getCode()+"'>Click here to Verify</a></h3>";
+				+"<h3><a href='"+requestUrl+"/verify/"+code.getCode()+"'>Click here to Verify</a></h3>";
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 		messageHelper.setFrom("sovonsingha0@gmail.com", senderName);
