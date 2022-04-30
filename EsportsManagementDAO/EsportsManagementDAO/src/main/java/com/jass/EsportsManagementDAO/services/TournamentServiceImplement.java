@@ -3,10 +3,12 @@ package com.jass.EsportsManagementDAO.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jass.EsportsManagementDAO.entities.Tournament;
 import com.jass.EsportsManagementDAO.repositories.TournamentRepository;
 
+@Service
 public class TournamentServiceImplement implements TournamentService {
 
 	@Autowired

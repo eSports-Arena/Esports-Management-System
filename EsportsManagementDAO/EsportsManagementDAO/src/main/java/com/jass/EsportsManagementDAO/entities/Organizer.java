@@ -91,11 +91,6 @@ public class Organizer {
 		this.tournament = tournament;
 	}
 
-	@Override
-	public String toString() {
-		return "Organizer [organizerId=" + organizerId + ", organizerUserId=" + organizerUserId + ", organizerSocialYt="
-				+ organizerSocialYt + ", organizerSocialInsta=" + organizerSocialInsta + ", organizerSocialTwitter="
-				+ organizerSocialTwitter + ", tournament=" + tournament + "]";
-	}
+	
 
 }

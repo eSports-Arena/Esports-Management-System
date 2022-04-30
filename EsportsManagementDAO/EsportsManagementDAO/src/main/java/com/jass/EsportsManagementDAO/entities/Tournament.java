@@ -57,13 +57,6 @@ public class Tournament {
 		this.tournamentName = tournamentName;
 	}
 
-	public Organizer getOrganizer() {
-		return organizer;
-	}
-
-	public void setOrganizer(Organizer organizer) {
-		this.organizer = organizer;
-	}
 
 	public Game getGame() {
 		return game;
@@ -89,10 +82,14 @@ public class Tournament {
 		this.team = team;
 	}
 
-	@Override
-	public String toString() {
-		return "Tournament [tournamentId=" + tournamentId + ", tournamentName=" + tournamentName + ", organizer="
-				+ organizer + ", game=" + game + ", tournamentDetail=" + tournamentDetail + ", team=" + team + "]";
+	public Organizer getOrganizer() {
+		return organizer;
 	}
+
+	public void setOrganizer(Organizer organizer) {
+		this.organizer = organizer;
+	}
+
+	
 
 }

@@ -19,7 +19,7 @@ public class TeamMate {
 	private int teamMateId;
 	@Column(name = "team_mate_name", nullable = false)
 	private String teamMateName;
-	@Column(name = "team_mate_email", nullable = false)
+	@Column(name = "team_mate_email")
 	private String teamMateEmail;
 	@ManyToOne
 	@JoinColumn(name = "team_mate_team_id", nullable = false, referencedColumnName = "team_id")
@@ -27,6 +27,12 @@ public class TeamMate {
 
 	public TeamMate() {
 		super();
+	}
+	
+	public TeamMate(String teamMateName, Team team) {
+		super();
+		this.teamMateName = teamMateName;
+		this.team = team;
 	}
 
 	public TeamMate(String teamMateName, String teamMateEmail) {

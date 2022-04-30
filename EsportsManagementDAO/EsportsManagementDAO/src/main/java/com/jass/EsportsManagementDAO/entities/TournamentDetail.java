@@ -138,13 +138,5 @@ public class TournamentDetail {
 		this.tournament = tournament;
 	}
 
-	@Override
-	public String toString() {
-		return "TournamentDetail [tDetailId=" + tDetailId + ", tDetailtype=" + tDetailtype + ", tDetailDateAndTime="
-				+ tDetailDateAndTime + ", tDetailDurationFrom=" + tDetailDurationFrom + ", tDetailDurationTo="
-				+ tDetailDurationTo + ", tDetailPrizePool=" + tDetailPrizePool + ", tDetailScrimType="
-				+ tDetailScrimType + ", tDetailSlots=" + tDetailSlots + ", tDetailDescription=" + tDetailDescription
-				+ ", tournament=" + tournament + "]";
-	}
-
+	
 }
