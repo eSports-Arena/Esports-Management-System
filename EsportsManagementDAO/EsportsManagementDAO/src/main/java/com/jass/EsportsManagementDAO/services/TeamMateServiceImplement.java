@@ -1,12 +1,15 @@
 package com.jass.EsportsManagementDAO.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jass.EsportsManagementDAO.entities.TeamMate;
 import com.jass.EsportsManagementDAO.repositories.TeamMateRepository;
 
+@Service
 public class TeamMateServiceImplement implements TeamMateService {
 
 	@Autowired
@@ -45,6 +48,11 @@ public class TeamMateServiceImplement implements TeamMateService {
 	@Override
 	public void deleteTeamMateById(int teamMateId) {
 			tMateRepo.deleteById(teamMateId);
+	}
+
+	@Override
+	public List<TeamMate> saveAllTeamMates(List<TeamMate> teamMates) {
+		return tMateRepo.saveAll(teamMates);
 	}
 
 }

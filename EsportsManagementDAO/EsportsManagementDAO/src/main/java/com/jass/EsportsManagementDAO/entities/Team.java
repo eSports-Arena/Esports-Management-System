@@ -21,7 +21,7 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "team_id")
 	private int teamId;
-	@Column(name = "team_name", nullable = false)
+	@Column(name = "team_name", nullable = false,unique = true)
 	private String teamName;
 	@Column(name = "team_leader_name", nullable = false)
 	private String teamLeaderName;
@@ -40,11 +40,13 @@ public class Team {
 		super();
 	}
 
-	public Team(String teamName, String teamLeaderName, int teamLeaderUserId) {
+	public Team(String teamName, String teamLeaderName, int teamLeaderUserId, Game game, Tournament tournament) {
 		super();
 		this.teamName = teamName;
 		this.teamLeaderName = teamLeaderName;
 		this.teamLeaderUserId = teamLeaderUserId;
+		this.game = game;
+		this.tournament = tournament;
 	}
 
 	public int getTeamId() {
