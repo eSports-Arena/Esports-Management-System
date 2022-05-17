@@ -1,8 +1,7 @@
-package com.jass.EsportsManagementDAO.entities;
+package com.sovon9.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 
 public class RegisterOrganizer {
 

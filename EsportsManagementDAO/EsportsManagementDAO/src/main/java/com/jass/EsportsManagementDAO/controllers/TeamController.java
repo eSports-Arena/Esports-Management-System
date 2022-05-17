@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,7 @@ import com.jass.EsportsManagementDAO.services.TournamentService;
 @RequestMapping("/team")
 public class TeamController {
 
+	private static final Logger log = LoggerFactory.getLogger(TeamController.class);
 	@Autowired
 	private TeamService teamService;
 	@Autowired
@@ -36,6 +39,7 @@ public class TeamController {
 	@PostMapping("/save")
 	public Team saveDetails(@RequestBody RegisterTeam rTeam, HttpSession session) {
 		try {
+			log.debug("..............inside TeamController:saveDetails..............");
 			//Creating local objects to save in DB
 			Team team = new Team();
 			
@@ -62,7 +66,7 @@ public class TeamController {
 			
 			//Saving TeamMates in DB			List<TeamMate> returnTeamMates = teamMateService.saveAllTeamMates(tempTeamMates);
 
-			System.out.println("Inserted...");
+			log.debug("..............Successfully Saved..............");
 			
 			//Returning data
 			returnTeam.setTeamMates(returnTeamMates);
@@ -70,7 +74,7 @@ public class TeamController {
 			return returnTeam;
 		}
 		catch (IllegalArgumentException e) {
-			System.out.println("Exception occured ---" + e);
+			log.debug("Exception Occurred" + e);
 			return null;
 		}
 	}
@@ -79,6 +83,7 @@ public class TeamController {
 	public Team updateDetails(@RequestBody RegisterTeam rTeam, HttpSession session)
 	{
 		try {
+			log.debug("..............inside TeamController:updateDetails..............");
 			//Creating local objects to save in DB
 			Team team = new Team();
 			
@@ -93,7 +98,7 @@ public class TeamController {
 			return teamService.saveTeam(team);
 		} 
 		catch (Exception e) {
-			System.out.println("Exception occured ---" + e);
+			log.debug("Exception Occurred" + e);
 			return null;
 		}
 	}

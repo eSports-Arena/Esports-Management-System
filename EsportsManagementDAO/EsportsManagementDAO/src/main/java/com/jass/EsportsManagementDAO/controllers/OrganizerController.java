@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,7 @@ import com.jass.EsportsManagementDAO.services.TournamentService;
 @RequestMapping("/organizer")
 public class OrganizerController {
 
+	private static final Logger log = LoggerFactory.getLogger(GameController.class);
 	@Autowired
 	private OrganizerService organizerService;
 	@Autowired
@@ -40,13 +43,14 @@ public class OrganizerController {
 	public Organizer save(@RequestBody RegisterOrganizer rOrganizer, HttpSession session)
 	{
 		try {
+			log.debug("..............inside OrganizerController:save..............");
 			//Creating local objects to save in DB
 			Organizer organizer = new Organizer();
 			Tournament tournament = new Tournament();
 			TournamentDetail tDetail = new TournamentDetail();
 			
 			//Fetching data from DB
-			Game tempGame = gameService.fetchGameById(rOrganizer.getTournamentGameId()).get();
+			Game tempGame = gameService.fetchGameByName(rOrganizer.getGameName());
 			
 			//Setting Organizer 
 			organizer.setOrganizerSocialInsta(rOrganizer.getOrganizerSocialInsta());
@@ -57,7 +61,6 @@ public class OrganizerController {
 			//Saving Organizer in DB
 			Organizer returnOrganizer = organizerService.saveOrganizer(organizer);
 			
-
 			//Setting Tournament 
 			tournament.setTournamentName(rOrganizer.getTournamentName());
 			tournament.setGame(tempGame);
@@ -80,7 +83,7 @@ public class OrganizerController {
 			//Saving Tournament Detail in DB
 			TournamentDetail returnDetail = tournamentDetailService.saveTournamentDetail(tDetail);
 			
-			System.out.println("Inserted successfully...");
+			log.debug("...............Successfully Saved..............");
 			
 			//Returning data
 			returnTournament.setTournamentDetail(returnDetail);
@@ -91,7 +94,7 @@ public class OrganizerController {
 			return returnOrganizer;
 		} 
 		catch (IllegalArgumentException e) {
-			System.out.println("Exception Occurred...");
+			log.debug("Exception Occurred" + e);
 			return null;
 		}
 	}
